@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.view.View;
 
 /**
  * An activity representing a single Lupetto detail screen. This
@@ -69,17 +67,6 @@ public class LupettoDetailActivity extends AppCompatActivity {
 
         Lupetto lupetto = Lupetto.findById(Lupetto.class, lupetto_id + 1);
         Anagrafica anagrafica = lupetto.Anagrafica;
-        ((TextView) findViewById(R.id.txt_cognome)).setText(lupetto.Cognome);
-        ((TextView) findViewById(R.id.txt_nome)).setText(lupetto.Nome);
-        ((TextView) findViewById(R.id.txt_email)).setText(anagrafica.Email);
-        ((TextView) findViewById(R.id.txt_indirizzo)).setText(anagrafica.Indirizzo);
-        ((TextView) findViewById(R.id.txt_pista)).setText(lupetto.Pista.name());
-        ((TextView) findViewById(R.id.txt_sestiglia)).setText(lupetto.Sestiglia.name());
-        ((CheckBox) findViewById(R.id.cb_cda)).setEnabled(lupetto.CdA);
-        ((TextView) findViewById(R.id.txt_fisso)).setText(anagrafica.Tel_fisso);
-        ((TextView) findViewById(R.id.txt_madre)).setText(anagrafica.Cell_Madre);
-        ((TextView) findViewById(R.id.txt_padre)).setText(anagrafica.Cell_Padre);
-
 
 
     }

@@ -1,8 +1,8 @@
 package gestionalebranco.walker93.com.gestionalebranco;
 
 import android.app.Activity;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,8 +58,17 @@ public class LupettoDetailFragment extends Fragment {
         //POPOLAZIONE ACTIVITY
         // Show the dummy content as text in a TextView.
         if (lupetto != null) {
-            ((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
-
+            //((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
+            ((TextView) rootView.findViewById(R.id.txt_cognome)).setText(lupetto.Cognome);
+            ((TextView) rootView.findViewById(R.id.txt_nome)).setText(lupetto.Nome);
+            ((TextView) rootView.findViewById(R.id.txt_email)).setText(anagrafica.Email);
+            ((TextView) rootView.findViewById(R.id.txt_indirizzo)).setText(anagrafica.Indirizzo);
+            ((TextView) rootView.findViewById(R.id.txt_pista)).setText(lupetto.Pista.name());
+            ((TextView) rootView.findViewById(R.id.txt_sestiglia)).setText(lupetto.Sestiglia.name());
+            ((CheckBox) rootView.findViewById(R.id.cb_cda)).setEnabled(lupetto.CdA);
+            ((TextView) rootView.findViewById(R.id.txt_fisso)).setText(anagrafica.Tel_fisso);
+            ((TextView) rootView.findViewById(R.id.txt_madre)).setText(anagrafica.Cell_Madre);
+            ((TextView) rootView.findViewById(R.id.txt_padre)).setText(anagrafica.Cell_Padre);
         }
 
         return rootView;
