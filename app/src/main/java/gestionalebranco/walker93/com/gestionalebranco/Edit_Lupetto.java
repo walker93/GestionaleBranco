@@ -60,6 +60,7 @@ public class Edit_Lupetto extends AppCompatActivity {
                     lupetto.Pista = Pista.values()[pista.getSelectedItemPosition()];
                     //TODO: Sistemare CDA non salvato corretamente
                     lupetto.CdA = cda.isChecked();
+
                     lupetto.Anagrafica = anagrafica;
                 lupetto.save();
                 } else {
