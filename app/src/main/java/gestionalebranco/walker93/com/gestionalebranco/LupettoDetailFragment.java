@@ -23,9 +23,10 @@ public class LupettoDetailFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
-
+    View rootView;
     private Lupetto lupetto;
     private Anagrafica anagrafica;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -37,9 +38,9 @@ public class LupettoDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
+        if (getArguments().containsKey("ID_Lupetto")) {
 
-            lupetto = Lupetto.findById(Lupetto.class, getArguments().getInt(ARG_ITEM_ID)+1);
+            lupetto = Lupetto.findById(Lupetto.class, getArguments().getInt("ID_Lupetto"));
             anagrafica = lupetto.Anagrafica;
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
@@ -51,12 +52,9 @@ public class LupettoDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lupetto_detail, container, false);
-        //View detail = inflater.inflate(R.layout.activity_lupetto_detail, null, false);
-        //POPOLAZIONE ACTIVITY
-        // Show the dummy content as text in a TextView.
+    public void onResume() {
+        super.onResume();
+
         if (lupetto != null) {
             //((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
 
@@ -69,6 +67,17 @@ public class LupettoDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.txt_madre)).setText(anagrafica.Cell_Madre);
             ((TextView) rootView.findViewById(R.id.txt_padre)).setText(anagrafica.Cell_Padre);
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        rootView = inflater.inflate(R.layout.lupetto_detail, container, false);
+        //View detail = inflater.inflate(R.layout.activity_lupetto_detail, null, false);
+        //POPOLAZIONE ACTIVITY
+        // Show the dummy content as text in a TextView.
+
 
         return rootView;
     }

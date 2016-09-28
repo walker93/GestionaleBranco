@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -25,7 +26,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lupetto_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
-
+        lupetto_id = getIntent().getIntExtra("ID_Lupetto", 0);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +34,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(view.getContext(), Edit_Lupetto.class);
                 intent.putExtra("ID_Lupetto", lupetto_id);
+                Log.d("Activity Transition", "Transazione, Inviato ID_lupetto: " + lupetto_id);
                 startActivity(intent);
             }
         });
@@ -56,8 +58,8 @@ public class LupettoDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            lupetto_id = getIntent().getIntExtra(LupettoDetailFragment.ARG_ITEM_ID, 0);
-            arguments.putInt(LupettoDetailFragment.ARG_ITEM_ID, lupetto_id);
+            lupetto_id = getIntent().getIntExtra("ID_Lupetto", 0);
+            arguments.putInt("ID_Lupetto", lupetto_id);
             LupettoDetailFragment fragment = new LupettoDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
@@ -66,8 +68,8 @@ public class LupettoDetailActivity extends AppCompatActivity {
         }
 
 
-        Lupetto lupetto = Lupetto.findById(Lupetto.class, lupetto_id + 1);
-        Anagrafica anagrafica = lupetto.Anagrafica;
+        //Lupetto lupetto = Lupetto.findById(Lupetto.class, lupetto_id + 1);
+        //Anagrafica anagrafica = lupetto.Anagrafica;
 
 
     }

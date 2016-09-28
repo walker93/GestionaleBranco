@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,12 +52,10 @@ public class LupettoListActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //List<Specialità> spec = new ArrayList<Specialità>();
-                Anagrafica anagrafica =  new Anagrafica("Alex", "Cortinovis", "Via Calverola, 13 Pradalunga",
-                        "walker1993@live.it", "035 767300", "3773053090", "3773053090");
-                anagrafica.save();
-                Lupetto lupetto = new Lupetto("Alex", "Cortinovis", Sestiglie.Bianchi, Pista.Lupo_anziano,
-                         Boolean.TRUE, anagrafica);
-                lupetto.save();
+                Intent intent = new Intent(view.getContext(), Edit_Lupetto.class);
+                intent.putExtra("ID_Lupetto", 0);
+                Log.d("Activity Transition", "Transazione, Inviato ID_lupetto: " + 0);
+                startActivity(intent);
                 SV.notifyDataSetChanged();
 
             }
@@ -105,7 +104,7 @@ public class LupettoListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putInt(LupettoDetailFragment.ARG_ITEM_ID, position);
+                        arguments.putInt("ID_Lupetto", position + 1);
                         LupettoDetailFragment fragment = new LupettoDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -114,7 +113,7 @@ public class LupettoListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, LupettoDetailActivity.class);
-                        intent.putExtra(LupettoDetailFragment.ARG_ITEM_ID, position);
+                        intent.putExtra("ID_Lupetto", position + 1);
 
                         context.startActivity(intent);
                     }
