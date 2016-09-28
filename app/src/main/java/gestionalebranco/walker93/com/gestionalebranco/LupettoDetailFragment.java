@@ -59,8 +59,7 @@ public class LupettoDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (lupetto != null) {
             //((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
-            ((TextView) rootView.findViewById(R.id.txt_cognome)).setText(lupetto.Cognome);
-            ((TextView) rootView.findViewById(R.id.txt_nome)).setText(lupetto.Nome);
+
             ((TextView) rootView.findViewById(R.id.txt_email)).setText(anagrafica.Email);
             ((TextView) rootView.findViewById(R.id.txt_indirizzo)).setText(anagrafica.Indirizzo);
             ((TextView) rootView.findViewById(R.id.txt_pista)).setText(lupetto.Pista.name());

@@ -1,13 +1,3 @@
-<!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lupetto_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context="gestionalebranco.walker93.com.gestionalebranco.LupettoDetailFragment" />
--->
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,18 +18,70 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nome:" />
+
+            <EditText
+                android:id="@+id/et_Nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Nome"
+                android:inputType="textPersonName"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cognome:" />
+
+            <EditText
+                android:id="@+id/et_Cognome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Cognome"
+                android:inputType="textPersonName"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:text="E-Mail:" />
 
-            <TextView
-                android:id="@+id/txt_email"
+            <EditText
+                android:id="@+id/et_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Email" />
+                android:layout_weight="0.2"
+                android:ems="10"
+                android:hint="E-Mail"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
 
         </LinearLayout>
 
@@ -56,12 +98,15 @@
                 android:layout_weight="0.16"
                 android:text="Indirizzo:" />
 
-            <TextView
-                android:id="@+id/txt_indirizzo"
+            <EditText
+                android:id="@+id/et_Indirizzo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Indirizzo" />
+                android:layout_weight="0.16"
+                android:ems="10"
+                android:hint="Indirizzo"
+                android:inputType="textPostalAddress" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -75,12 +120,16 @@
                 android:layout_height="wrap_content"
                 android:text="Tel. Fisso:" />
 
-            <TextView
-                android:id="@+id/txt_fisso"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/et_Fisso"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fisso" />
+                android:ems="10"
+                android:hint="Tel. Fisso"
+                android:inputType="phone"
+                android:singleLine="true" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -95,12 +144,15 @@
                 android:layout_weight="0.09"
                 android:text="Cell. Madre:" />
 
-            <TextView
-                android:id="@+id/txt_madre"
+            <EditText
+                android:id="@+id/et_Madre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cell Madre" />
+                android:layout_weight="0.09"
+                android:ems="10"
+                android:hint="Cell. Madre"
+                android:inputType="phone" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -115,12 +167,15 @@
                 android:layout_weight="0.10"
                 android:text="Cell. Padre:" />
 
-            <TextView
-                android:id="@+id/txt_padre"
+            <EditText
+                android:id="@+id/et_Padre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cell Padre" />
+                android:layout_weight="0.10"
+                android:ems="10"
+                android:hint="Cell. Padre"
+                android:inputType="phone" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -128,19 +183,17 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_sestiglia"
+            <Spinner
+                android:id="@+id/spinner_Sestiglia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sestiglia" />
+                android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/txt_pista"
+            <Spinner
+                android:id="@+id/spinner_Pista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pista" />
+                android:layout_weight="1" />
 
             <CheckBox
                 android:id="@+id/cb_cda"
@@ -148,7 +201,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="false"
-                android:clickable="false"
                 android:text="C.d.A." />
 
         </LinearLayout>

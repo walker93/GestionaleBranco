@@ -3,25 +3,27 @@
     package="gestionalebranco.walker93.com.gestionalebranco">
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppTheme">
 
-        android:name="com.orm.SugarApp">
-        <!--<meta-data android:name="DATABASE" android:value="lupetti.db" />
+        <!--
+        <meta-data android:name="DATABASE" android:value="lupetti.db" />
         <meta-data android:name="VERSION" android:value="3" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.walker93" />-->
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.walker93" />
+        -->
         <activity
             android:name=".LupettoListActivity"
             android:label="@string/title_lupetto_list"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -32,6 +34,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="gestionalebranco.walker93.com.gestionalebranco.LupettoListActivity" />
+        </activity>
+        <activity
+            android:name=".Edit_Lupetto"
+            android:label="@string/title_activity_edit__lupetto"
+            android:parentActivityName=".LupettoDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gestionalebranco.walker93.com.gestionalebranco.LupettoDetailActivity" />
         </activity>
     </application>
 

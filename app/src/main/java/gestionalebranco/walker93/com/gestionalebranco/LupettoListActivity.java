@@ -2,24 +2,18 @@ package gestionalebranco.walker93.com.gestionalebranco;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * An activity representing a list of Lupetti. This activity
@@ -31,6 +25,8 @@ import java.util.Locale;
  */
 public class LupettoListActivity extends AppCompatActivity {
 
+    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class);
+    SimpleItemRecyclerViewAdapter SV = new SimpleItemRecyclerViewAdapter(lupetti);
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -47,6 +43,9 @@ public class LupettoListActivity extends AppCompatActivity {
         toolbar.setTitle(getTitle());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //TODO: Change fab icon
+        // fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_full_sad, .getTheme()));
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,8 +74,7 @@ public class LupettoListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
     }
-    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class);
-    SimpleItemRecyclerViewAdapter SV = new SimpleItemRecyclerViewAdapter(lupetti);
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(SV);
     }

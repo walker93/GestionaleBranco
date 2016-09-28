@@ -10,9 +10,32 @@ package gestionalebranco.walker93.com.gestionalebranco;
 
 
  enum Pista {
-    Ammissione, Promessa, Prima_stella, Seconda_stella, Lupo_anziano
+     Ammissione,
+     Promessa,
+     Prima_stella {
+         @Override
+         public String toString() {
+             return "1° Stella";
+         }
+     },
+     Seconda_stella {
+         @Override
+         public String toString() {
+             return "2° Stella";
+         }
+     },
+     Lupo_anziano {
+         @Override
+         public String toString() {
+             return "Lupo Anziano";
+         }
+     }
 }
 
 enum Colore {
-    Bianca, Rossa, Verde, Gialla, Blu
+    Bianca,
+    Rossa,
+    Verde,
+    Gialla,
+    Blu
 }

@@ -1,10 +1,9 @@
 package gestionalebranco.walker93.com.gestionalebranco;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Table;
+import com.orm.dsl.Ignore;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Workstation 2 on 26/09/2016.
@@ -17,7 +16,9 @@ public class Lupetto extends SugarRecord{
     public Pista Pista;
     // public List<Specialità> Specialità;
     public boolean CdA;
+    @Ignore
     public Date DataNascita;
+    @Ignore
     public String Luogo_Nascita;
     public Anagrafica Anagrafica;
 
