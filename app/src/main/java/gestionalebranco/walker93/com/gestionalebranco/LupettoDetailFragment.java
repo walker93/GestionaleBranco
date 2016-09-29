@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 
@@ -26,7 +26,7 @@ public class LupettoDetailFragment extends Fragment {
     View rootView;
     private Lupetto lupetto;
     private Anagrafica anagrafica;
-
+    private int lupetto_id;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -39,10 +39,14 @@ public class LupettoDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey("ID_Lupetto")) {
-
-            lupetto = Lupetto.findById(Lupetto.class, getArguments().getInt("ID_Lupetto"));
-            anagrafica = lupetto.Anagrafica;
             Activity activity = this.getActivity();
+            lupetto_id = getArguments().getInt("ID_Lupetto", 0);
+            if (lupetto_id == 0) {
+                lupetto_id = activity.getIntent().getIntExtra("ID_Lupetto", 0);
+            }
+            lupetto = Lupetto.findById(Lupetto.class, lupetto_id);
+            anagrafica = Anagrafica.findById(Anagrafica.class, lupetto_id);
+
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(lupetto.Nome + " " + lupetto.Cognome);
@@ -60,9 +64,9 @@ public class LupettoDetailFragment extends Fragment {
 
             ((TextView) rootView.findViewById(R.id.txt_email)).setText(anagrafica.Email);
             ((TextView) rootView.findViewById(R.id.txt_indirizzo)).setText(anagrafica.Indirizzo);
-            ((TextView) rootView.findViewById(R.id.txt_pista)).setText(lupetto.Pista.name());
-            ((TextView) rootView.findViewById(R.id.txt_sestiglia)).setText(lupetto.Sestiglia.name());
-            ((CheckBox) rootView.findViewById(R.id.cb_cda)).setEnabled(lupetto.CdA);
+            ((TextView) rootView.findViewById(R.id.txt_pista)).setText(lupetto.Pista.toString());
+            ((TextView) rootView.findViewById(R.id.txt_sestiglia)).setText(lupetto.Sestiglia.toString());
+            ((CheckedTextView) rootView.findViewById(R.id.ctb_cda)).setChecked(lupetto.CdA);
             ((TextView) rootView.findViewById(R.id.txt_fisso)).setText(anagrafica.Tel_fisso);
             ((TextView) rootView.findViewById(R.id.txt_madre)).setText(anagrafica.Cell_Madre);
             ((TextView) rootView.findViewById(R.id.txt_padre)).setText(anagrafica.Cell_Padre);

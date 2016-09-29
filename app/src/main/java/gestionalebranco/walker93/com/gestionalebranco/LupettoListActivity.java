@@ -34,6 +34,7 @@ public class LupettoListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class LupettoListActivity extends AppCompatActivity {
                 intent.putExtra("ID_Lupetto", 0);
                 Log.d("Activity Transition", "Transazione, Inviato ID_lupetto: " + 0);
                 startActivity(intent);
-                SV.notifyDataSetChanged();
+
 
             }
         });
@@ -99,12 +100,13 @@ public class LupettoListActivity extends AppCompatActivity {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).Nome);
             holder.mContentView.setText(mValues.get(position).Cognome);
+
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putInt("ID_Lupetto", position + 1);
+                        arguments.putInt("ID_Lupetto", holder.mItem.getId().intValue());
                         LupettoDetailFragment fragment = new LupettoDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -113,7 +115,7 @@ public class LupettoListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, LupettoDetailActivity.class);
-                        intent.putExtra("ID_Lupetto", position + 1);
+                        intent.putExtra("ID_Lupetto", holder.mItem.getId().intValue());
 
                         context.startActivity(intent);
                     }

@@ -9,6 +9,7 @@ import java.util.Date;
  */
 
 public class Lupetto extends SugarRecord{
+
     public String Nome;
     public String Cognome;
     public Sestiglie Sestiglia;
@@ -27,6 +28,7 @@ public class Lupetto extends SugarRecord{
 
     public Lupetto(String nome, String cognome, Sestiglie sestiglia, Pista pista,
                    boolean cda, Anagrafica anagrafica){
+
         this.Nome = nome;
         this.Cognome = cognome;
         this.Sestiglia = sestiglia;

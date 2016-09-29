@@ -2,11 +2,15 @@ package gestionalebranco.walker93.com.gestionalebranco;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -27,6 +31,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
         lupetto_id = getIntent().getIntExtra("ID_Lupetto", 0);
+        Log.d("Activity Transition", "Transazione, Ricevuto ID_lupetto: " + lupetto_id);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +80,13 @@ public class LupettoDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_detail_activity, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
@@ -86,7 +98,39 @@ public class LupettoDetailActivity extends AppCompatActivity {
             //
             navigateUpTo(new Intent(this, LupettoListActivity.class));
             return true;
+        } else if (id == R.id.action_delete) {
+            final Lupetto lupetto = Lupetto.findById(Lupetto.class, lupetto_id);
+            final Anagrafica anagrafica = Anagrafica.findById(Anagrafica.class, lupetto_id);
+            final CoordinatorLayout CL = (CoordinatorLayout) findViewById(R.id.CL);
+            boolean l_deleted = lupetto.delete();
+            boolean a_deleted = anagrafica.delete();
+            if (l_deleted && a_deleted) {
+                SnackbarWrapper snackbar = SnackbarWrapper
+                        .make(getApplicationContext(), "Lupetto eliminato!", 3000)
+                        .setAction("ANNULLA", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                anagrafica.save();
+                                lupetto.save();
+                                SnackbarWrapper snackbar1 = SnackbarWrapper.make(getApplicationContext(),
+                                        "Lupetto ripristinato", 1000);
+                                snackbar1.show();
+                            }
+                        });
+
+                snackbar.show();
+
+                Intent intent = new Intent(this, LupettoListActivity.class);
+                startActivity(intent);
+
+            } else {
+                Snackbar snackbar = Snackbar
+                        .make(CL, "Impossibile eliminare lupetto", Snackbar.LENGTH_LONG);
+            }
+
+
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

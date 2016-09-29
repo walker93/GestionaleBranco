@@ -58,7 +58,7 @@ public class Edit_Lupetto extends AppCompatActivity {
                     lupetto.Cognome = cognome.getText().toString();
                     lupetto.Sestiglia = Sestiglie.values()[sestiglia.getSelectedItemPosition()];
                     lupetto.Pista = Pista.values()[pista.getSelectedItemPosition()];
-                    //TODO: Sistemare CDA non salvato corretamente
+
                     lupetto.CdA = cda.isChecked();
 
                     lupetto.Anagrafica = anagrafica;
@@ -74,7 +74,9 @@ public class Edit_Lupetto extends AppCompatActivity {
                             padre.getText().toString());
                     anagrafica.save();
 
+
                     Lupetto lupetto = new Lupetto(
+
                             nome.getText().toString(),
                             cognome.getText().toString(),
                             Sestiglie.values()[sestiglia.getSelectedItemPosition()],
@@ -82,7 +84,10 @@ public class Edit_Lupetto extends AppCompatActivity {
                             cda.isChecked(),
                             anagrafica);
                     lupetto.save();
+
                     id_lupetto = lupetto.getId().intValue();
+
+
                 }
 
                 Intent intent = new Intent(view.getContext(), LupettoDetailActivity.class);
@@ -133,7 +138,7 @@ public class Edit_Lupetto extends AppCompatActivity {
             ((EditText) findViewById(R.id.et_Indirizzo)).setText(anagrafica.Indirizzo);
             spinner_Pista.setSelection(lupetto.Pista.ordinal());
             spinner_Sestiglia.setSelection(lupetto.Sestiglia.ordinal());
-            ((CheckBox) findViewById(R.id.cb_cda)).setEnabled(lupetto.CdA);
+            ((CheckBox) findViewById(R.id.cb_cda)).setChecked(lupetto.CdA);
             ((EditText) findViewById(R.id.et_Fisso)).setText(anagrafica.Tel_fisso);
             ((EditText) findViewById(R.id.et_Madre)).setText(anagrafica.Cell_Madre);
             ((EditText) findViewById(R.id.et_Padre)).setText(anagrafica.Cell_Padre);
