@@ -1,9 +1,5 @@
 package gestionalebranco.walker93.com.gestionalebranco;
 
-import android.location.Address;
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.CommonDataKinds;
-
 import com.orm.SugarRecord;
 
 /**
@@ -18,13 +14,14 @@ public class Anagrafica extends SugarRecord {
     public String Tel_fisso;
     public String Cell_Madre;
     public String Cell_Padre;
-
+    public String DataNascita;
+    public String Luogo_Nascita;
     public Anagrafica(){
     }
 
     public Anagrafica(String nome, String cognome, String indirizzo,
                       String email, String tel_fisso,
-                      String cell_Madre, String cell_Padre) {
+                      String cell_Madre, String cell_Padre, String dataNascita, String luogo_nascita) {
         Nome = nome;
         Cognome = cognome;
         Indirizzo = indirizzo;
@@ -32,5 +29,7 @@ public class Anagrafica extends SugarRecord {
         Tel_fisso = tel_fisso;
         Cell_Madre = cell_Madre;
         Cell_Padre = cell_Padre;
+        DataNascita = dataNascita;
+        Luogo_Nascita = luogo_nascita;
     }
 }

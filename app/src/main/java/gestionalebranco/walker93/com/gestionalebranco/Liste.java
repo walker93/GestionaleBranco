@@ -9,7 +9,7 @@ package gestionalebranco.walker93.com.gestionalebranco;
 }
 
 
- enum Pista {
+enum Pista {
      Ammissione,
      Promessa,
      Prima_stella {

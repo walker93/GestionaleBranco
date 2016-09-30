@@ -10,13 +10,20 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Edit_Lupetto extends AppCompatActivity {
 
     int id_lupetto = 0;
     Lupetto lupetto;
     Anagrafica anagrafica;
+    ScrollView lv;
+    LinearLayout linearlayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +45,20 @@ public class Edit_Lupetto extends AppCompatActivity {
                 EditText madre = (EditText) findViewById(R.id.et_Madre);
                 EditText padre = (EditText) findViewById(R.id.et_Padre);
                 EditText email = (EditText) findViewById(R.id.et_email);
+                EditText data = (EditText) findViewById(R.id.et_data);
+                EditText luogo = (EditText) findViewById(R.id.et_luogo);
                 CheckBox cda = (CheckBox) findViewById(R.id.cb_cda);
                 Spinner sestiglia = (Spinner) findViewById(R.id.spinner_Sestiglia);
                 Spinner pista = (Spinner) findViewById(R.id.spinner_Pista);
 
+                List<Specialità> specs = new ArrayList<>();
+                CheckBox cb_spec;
+                for (int i = 0; i < linearlayout.getChildCount(); i++) {
+                    cb_spec = (CheckBox) linearlayout.getChildAt(i);
+                    if (cb_spec.isChecked()) {
+                        specs.add(Specialità.allSpecialità.get(i));
+                    }
+                }
                 if (id_lupetto > 0) {
                     Anagrafica anagrafica = Anagrafica.findById(Anagrafica.class, id_lupetto);
                     anagrafica.Nome = nome.getText().toString();
@@ -51,6 +68,8 @@ public class Edit_Lupetto extends AppCompatActivity {
                     anagrafica.Tel_fisso = fisso.getText().toString();
                     anagrafica.Cell_Madre = madre.getText().toString();
                     anagrafica.Cell_Padre = padre.getText().toString();
+                    anagrafica.DataNascita = data.getText().toString();
+                    anagrafica.Luogo_Nascita = luogo.getText().toString();
                 anagrafica.save();
 
                     Lupetto lupetto = Lupetto.findById(Lupetto.class, id_lupetto);
@@ -58,9 +77,8 @@ public class Edit_Lupetto extends AppCompatActivity {
                     lupetto.Cognome = cognome.getText().toString();
                     lupetto.Sestiglia = Sestiglie.values()[sestiglia.getSelectedItemPosition()];
                     lupetto.Pista = Pista.values()[pista.getSelectedItemPosition()];
-
+                    lupetto.Specialità = Specialità.idsToString(specs);
                     lupetto.CdA = cda.isChecked();
-
                     lupetto.Anagrafica = anagrafica;
                 lupetto.save();
                 } else {
@@ -71,23 +89,21 @@ public class Edit_Lupetto extends AppCompatActivity {
                             email.getText().toString(),
                             fisso.getText().toString(),
                             madre.getText().toString(),
-                            padre.getText().toString());
+                            padre.getText().toString(),
+                            data.getText().toString(),
+                            luogo.getText().toString());
                     anagrafica.save();
 
-
                     Lupetto lupetto = new Lupetto(
-
                             nome.getText().toString(),
                             cognome.getText().toString(),
                             Sestiglie.values()[sestiglia.getSelectedItemPosition()],
                             Pista.values()[pista.getSelectedItemPosition()],
+                            Specialità.idsToString(specs),
                             cda.isChecked(),
                             anagrafica);
                     lupetto.save();
-
                     id_lupetto = lupetto.getId().intValue();
-
-
                 }
 
                 Intent intent = new Intent(view.getContext(), LupettoDetailActivity.class);
@@ -129,7 +145,7 @@ public class Edit_Lupetto extends AppCompatActivity {
                 R.layout.support_simple_spinner_dropdown_item, Sestiglie.values()));
         Spinner spinner_Pista = (Spinner) findViewById(R.id.spinner_Pista);
         spinner_Pista.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, Pista.values()));
-
+        List<Specialità> specs = new ArrayList<>();
         if (lupetto != null) {
             //((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
             ((EditText) findViewById(R.id.et_Nome)).setText(anagrafica.Nome);
@@ -142,6 +158,28 @@ public class Edit_Lupetto extends AppCompatActivity {
             ((EditText) findViewById(R.id.et_Fisso)).setText(anagrafica.Tel_fisso);
             ((EditText) findViewById(R.id.et_Madre)).setText(anagrafica.Cell_Madre);
             ((EditText) findViewById(R.id.et_Padre)).setText(anagrafica.Cell_Padre);
+            ((EditText) findViewById(R.id.et_data)).setText(anagrafica.DataNascita);
+            ((EditText) findViewById(R.id.et_luogo)).setText(anagrafica.Luogo_Nascita);
+            specs = Specialità.stringToIDs(lupetto.Specialità);
+
         }
+        //POPOLAZIONE ListView
+        CheckBox cb_spec;
+
+        lv = (ScrollView) findViewById(R.id.sv_specialità);
+
+        linearlayout = (LinearLayout) lv.getChildAt(0);
+        for (Specialità spec : Specialità.allSpecialità) {
+            cb_spec = new CheckBox(this);
+            cb_spec.setText(spec.Nome);
+            if (lupetto != null) {
+                if (specs.contains(spec)) {
+                    cb_spec.setChecked(true);
+                }
+            }
+            linearlayout.addView(cb_spec);
+        }
+
+
     }
 }

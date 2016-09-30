@@ -4,11 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckedTextView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -58,7 +64,7 @@ public class LupettoDetailFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        List<Specialità> specs = new ArrayList<>();
         if (lupetto != null) {
             //((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
 
@@ -70,6 +76,19 @@ public class LupettoDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.txt_fisso)).setText(anagrafica.Tel_fisso);
             ((TextView) rootView.findViewById(R.id.txt_madre)).setText(anagrafica.Cell_Madre);
             ((TextView) rootView.findViewById(R.id.txt_padre)).setText(anagrafica.Cell_Padre);
+            ((TextView) rootView.findViewById(R.id.tv_data)).setText(anagrafica.DataNascita);
+            ((TextView) rootView.findViewById(R.id.tv_luogo)).setText(anagrafica.Luogo_Nascita);
+            specs = Specialità.stringToIDs(lupetto.Specialità);
+            //POPOLAZIONE ListView
+            TextView tv_spec;
+            ScrollView lv = (ScrollView) rootView.findViewById(R.id.lv_Specialità);
+            LinearLayout linearLayout = (LinearLayout) lv.getChildAt(0);
+            for (Specialità spec : specs) {
+                tv_spec = new TextView(getContext());
+                tv_spec.setText(spec.Nome);
+                tv_spec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                linearLayout.addView(tv_spec);
+            }
         }
     }
 
