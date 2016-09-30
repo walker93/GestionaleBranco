@@ -45,8 +45,6 @@ public class LupettoListActivity extends AppCompatActivity {
         toolbar.setTitle(getTitle());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //TODO: Change fab icon
-        // fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_full_sad, .getTheme()));
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
