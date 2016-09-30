@@ -20,7 +20,7 @@ public class Specialità {
             add(new Specialità("Liturgista", Pista.Seconda_stella, Colore.Bianca));
             add(new Specialità("Storia Sacra", Pista.Prima_stella, Colore.Bianca));
             add(new Specialità("Attore Folletto", Pista.Seconda_stella, Colore.Blu));
-            add(new Specialità("collezionista", Pista.Prima_stella, Colore.Blu));
+            add(new Specialità("Collezionista", Pista.Prima_stella, Colore.Blu));
             add(new Specialità("Giornalista", Pista.Seconda_stella, Colore.Blu));
             add(new Specialità("Occhio di Lince", Pista.Seconda_stella, Colore.Blu));
             add(new Specialità("Osservatore", Pista.Seconda_stella, Colore.Blu));
@@ -43,7 +43,7 @@ public class Specialità {
             add(new Specialità("Nuotatore", Pista.Seconda_stella, Colore.Verde));
             add(new Specialità("Pattinatore", Pista.Prima_stella, Colore.Verde));
             add(new Specialità("Sciatore", Pista.Seconda_stella, Colore.Verde));
-            add(new Specialità("guida", Pista.Seconda_stella, Colore.Rossa));
+            add(new Specialità("Guida", Pista.Seconda_stella, Colore.Rossa));
             add(new Specialità("Infermiere", Pista.Seconda_stella, Colore.Rossa));
             add(new Specialità("Massaio", Pista.Prima_stella, Colore.Rossa));
             add(new Specialità("Messaggero", Pista.Prima_stella, Colore.Rossa));
@@ -72,9 +72,11 @@ public class Specialità {
 
     public static List<Specialità> stringToIDs(String ids) {
         List<Specialità> result = new ArrayList<>();
-        String[] split = ids.split(";");
-        for (int i = 0; i < split.length; i++) {
-            result.add(Specialità.allSpecialità.get(Integer.parseInt(split[i])));
+        if (ids.length()>=1) {
+            String[] split = ids.split(";");
+            for (int i = 0; i < split.length; i++) {
+                result.add(Specialità.allSpecialità.get(Integer.parseInt(split[i])));
+            }
         }
         return result;
     }

@@ -108,7 +108,7 @@ public class Edit_Lupetto extends AppCompatActivity {
 
                 Intent intent = new Intent(view.getContext(), LupettoDetailActivity.class);
                 intent.putExtra("ID_Lupetto", id_lupetto);
-                startActivity(intent);
+                navigateUpTo(intent);
 
             }
         });
