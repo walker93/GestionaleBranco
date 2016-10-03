@@ -17,6 +17,8 @@
         <activity
             android:name=".LupettoListActivity"
             android:label="@string/title_lupetto_list"
+            android:launchMode="standard"
+
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +30,9 @@
         <activity
             android:name=".LupettoDetailActivity"
             android:label="@string/title_lupetto_detail"
+            android:launchMode="standard"
             android:parentActivityName=".LupettoListActivity"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -37,6 +41,8 @@
         <activity
             android:name=".Edit_Lupetto"
             android:label="@string/title_activity_edit__lupetto"
+            android:launchMode="standard"
+
             android:parentActivityName=".LupettoDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

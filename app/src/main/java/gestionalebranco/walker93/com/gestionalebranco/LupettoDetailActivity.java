@@ -96,7 +96,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, LupettoListActivity.class));
+            startActivity(new Intent(this, LupettoListActivity.class));
             return true;
         } else if (id == R.id.action_delete) {
             final Lupetto lupetto = Lupetto.findById(Lupetto.class, lupetto_id);

@@ -73,6 +73,18 @@ public class LupettoListActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        SV.notifyItemRangeChanged(0, SV.getItemCount());
+
+        super.onNewIntent(intent);
+    }
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(SV);
     }
@@ -80,7 +92,7 @@ public class LupettoListActivity extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<Lupetto> mValues;
+        private  List<Lupetto> mValues;
 
         public SimpleItemRecyclerViewAdapter(List<Lupetto> items) {
             mValues = items;
@@ -95,6 +107,7 @@ public class LupettoListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+            mValues = Lupetto.listAll(Lupetto.class);
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).Nome);
             holder.mContentView.setText(mValues.get(position).Cognome);
@@ -120,6 +133,7 @@ public class LupettoListActivity extends AppCompatActivity {
                 }
             });
         }
+
 
         @Override
         public int getItemCount() {
