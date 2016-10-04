@@ -41,6 +41,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
                 intent.putExtra("ID_Lupetto", lupetto_id);
                 Log.d("Activity Transition", "Transazione, Inviato ID_lupetto: " + lupetto_id);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -97,6 +98,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
             startActivity(new Intent(this, LupettoListActivity.class));
+            finish();
             return true;
         } else if (id == R.id.action_delete) {
             final Lupetto lupetto = Lupetto.findById(Lupetto.class, lupetto_id);
@@ -122,7 +124,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(this, LupettoListActivity.class);
                 startActivity(intent);
-
+                finish();
             } else {
                 Snackbar snackbar = Snackbar
                         .make(CL, "Impossibile eliminare lupetto", Snackbar.LENGTH_LONG);
@@ -132,5 +134,13 @@ public class LupettoDetailActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, LupettoListActivity.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

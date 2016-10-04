@@ -55,7 +55,7 @@ public class LupettoListActivity extends AppCompatActivity {
                 intent.putExtra("ID_Lupetto", 0);
                 Log.d("Activity Transition", "Transazione, Inviato ID_lupetto: " + 0);
                 startActivity(intent);
-
+                finish();
 
             }
         });
@@ -129,6 +129,7 @@ public class LupettoListActivity extends AppCompatActivity {
                         intent.putExtra("ID_Lupetto", holder.mItem.getId().intValue());
 
                         context.startActivity(intent);
+                        finish();
                     }
                 }
             });

@@ -65,6 +65,7 @@ public class Edit_Lupetto extends AppCompatActivity {
                     Intent intent = new Intent(view.getContext(), LupettoDetailActivity.class);
                     intent.putExtra("ID_Lupetto", id_lupetto);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -100,47 +101,56 @@ public class Edit_Lupetto extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            //TODO: Controllare cambiamenti nei campi di testo
-            if (TextChanged) {
-                // è stato modificato chiedo se salvare
-                if (!(nome.getText().toString() == "" |
+
+            goBack();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void goBack(){
+        if (TextChanged) {
+            // è stato modificato chiedo se salvare
+            if (!(nome.getText().toString() == "" |
                     cognome.getText().toString() == "" |
                     indirizzo.getText().toString() == "" |
                     fisso.getText().toString() == "" |
                     madre.getText().toString() == "" |
                     padre.getText().toString() == "" |
                     email.getText().toString() == "")){
-                    ShowSaveDialog();
-                }else{
-                    if (id_lupetto==0) {
-                        //CREAZIONE
-                        Intent goup = new Intent(getApplicationContext(), LupettoListActivity.class);
-                        goup.putExtra("ID_Lupetto", id_lupetto);
-                        startActivity(goup);
-                    }else{
-                        //MODIFICA
-                        Intent goup = new Intent(getApplicationContext(), LupettoDetailActivity.class);
-                        goup.putExtra("ID_Lupetto", id_lupetto);
-                        startActivity(goup);
-                    }
-                }
+                ShowSaveDialog();
             }else{
-                //nessuna modifica
+                Intent goup;
                 if (id_lupetto==0) {
                     //CREAZIONE
-                    Intent goup = new Intent(getApplicationContext(), LupettoListActivity.class);
-                    goup.putExtra("ID_Lupetto", id_lupetto);
-                    startActivity(goup);
+                    goup = new Intent(getApplicationContext(), LupettoListActivity.class);
                 }else{
                     //MODIFICA
-                    Intent goup = new Intent(getApplicationContext(), LupettoDetailActivity.class);
-                    goup.putExtra("ID_Lupetto", id_lupetto);
-                    startActivity(goup);
+                    goup = new Intent(getApplicationContext(), LupettoDetailActivity.class);
                 }
+                goup.putExtra("ID_Lupetto", id_lupetto);
+                startActivity(goup);
+                finish();
             }
-            return true;
+        }else{
+            //nessuna modifica
+            Intent goup;
+            if (id_lupetto==0) {
+                //CREAZIONE
+                goup = new Intent(getApplicationContext(), LupettoListActivity.class);
+            }else{
+                //MODIFICA
+                goup = new Intent(getApplicationContext(), LupettoDetailActivity.class);
+            }
+            goup.putExtra("ID_Lupetto", id_lupetto);
+            startActivity(goup);
+            finish();
         }
-        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
     }
 
     void fillData() {
@@ -279,22 +289,23 @@ public class Edit_Lupetto extends AppCompatActivity {
                             intent.putExtra("ID_Lupetto", id_lupetto);
 
                             startActivity(intent);
+                            finish();
                         }
                     }
                 })
                 .setNegativeButton("Non salvare", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        Intent goup;
                         if (id_lupetto==0) {
                             //CREAZIONE
-                            Intent goup = new Intent(getApplicationContext(), LupettoListActivity.class);
-                            goup.putExtra("ID_Lupetto", id_lupetto);
-                            startActivity(goup);
+                            goup = new Intent(getApplicationContext(), LupettoListActivity.class);
                         }else{
                             //MODIFICA
-                            Intent goup = new Intent(getApplicationContext(), LupettoDetailActivity.class);
-                            goup.putExtra("ID_Lupetto", id_lupetto);
-                            startActivity(goup);
+                            goup = new Intent(getApplicationContext(), LupettoDetailActivity.class);
                         }
+                        goup.putExtra("ID_Lupetto", id_lupetto);
+                        startActivity(goup);
+                        finish();
                     }
                 })
                 .setIcon(R.drawable.ic_alert_dialog)
