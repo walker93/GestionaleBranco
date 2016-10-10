@@ -129,10 +129,7 @@ public class LupettoDetailActivity extends AppCompatActivity {
                 Snackbar snackbar = Snackbar
                         .make(CL, "Impossibile eliminare lupetto", Snackbar.LENGTH_LONG);
             }
-
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 

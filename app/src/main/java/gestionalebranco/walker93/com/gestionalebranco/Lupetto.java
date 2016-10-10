@@ -15,13 +15,14 @@ public class Lupetto extends SugarRecord{
     public String Specialità;
     public boolean CdA;
     public Anagrafica Anagrafica;
-
+    public String Prove;
+    public static String Assenze;
 
     public Lupetto(){
     }
 
     public Lupetto(String nome, String cognome, Sestiglie sestiglia, Pista pista,
-                   String specialità, boolean cda, Anagrafica anagrafica) {
+                   String specialità, boolean cda, Anagrafica anagrafica, String prove, String assenze) {
 
         this.Nome = nome;
         this.Cognome = cognome;
@@ -30,5 +31,7 @@ public class Lupetto extends SugarRecord{
         this.Specialità = specialità;
         this.CdA = cda;
         this.Anagrafica = anagrafica;
+        this.Prove = prove;
+        this.Assenze = assenze;
     }
 }

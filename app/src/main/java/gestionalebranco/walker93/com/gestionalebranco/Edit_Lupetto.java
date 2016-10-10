@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
@@ -43,6 +44,7 @@ public class Edit_Lupetto extends AppCompatActivity {
         public void afterTextChanged(Editable s) {}
 
     };
+    MultiAutoCompleteTextView prove;
 
 
     @Override
@@ -79,6 +81,10 @@ public class Edit_Lupetto extends AppCompatActivity {
         email = (EditText) findViewById(R.id.et_email);
         data = (EditText) findViewById(R.id.et_data);
         luogo = (EditText) findViewById(R.id.et_luogo);
+        prove = (MultiAutoCompleteTextView) findViewById(R.id.actv_Prove);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, Prova.ProveToName());
+        prove.setAdapter(adapter);
+        prove.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
         fillData();
 
@@ -179,6 +185,13 @@ public class Edit_Lupetto extends AppCompatActivity {
             ((EditText) findViewById(R.id.et_data)).setText(anagrafica.DataNascita);
             ((EditText) findViewById(R.id.et_luogo)).setText(anagrafica.Luogo_Nascita);
             specs = Specialità.stringToIDs(lupetto.Specialità);
+            List<String> a = Prova.ProveToName(Prova.IDStringToProveList(lupetto.Prove));
+            String p ="";
+            for (String s :
+                    a) {
+                p = p + s + ", ";
+            }
+            prove.setText(p);
 
         }
         //POPOLAZIONE ListView
@@ -216,6 +229,8 @@ public class Edit_Lupetto extends AppCompatActivity {
         Spinner sestiglia = (Spinner) findViewById(R.id.spinner_Sestiglia);
         Spinner pista = (Spinner) findViewById(R.id.spinner_Pista);
         List<Specialità> specs = new ArrayList<>();
+
+        //Specialità
         CheckBox cb_spec;
         for (int i = 0; i < linearlayout.getChildCount(); i++) {
             cb_spec = (CheckBox) linearlayout.getChildAt(i);
@@ -223,7 +238,6 @@ public class Edit_Lupetto extends AppCompatActivity {
                 specs.add(Specialità.allSpecialità.get(i));
             }
         }
-
 
         if (id_lupetto > 0) {
             Anagrafica anagrafica = Anagrafica.findById(Anagrafica.class, id_lupetto);
@@ -246,6 +260,8 @@ public class Edit_Lupetto extends AppCompatActivity {
             lupetto.Specialità = Specialità.idsToString(specs);
             lupetto.CdA = cda.isChecked();
             lupetto.Anagrafica = anagrafica;
+            lupetto.Prove = Prova.ListProveToIDString(Prova.verboseStringToList(prove.getText().toString()));
+            Lupetto.Assenze = "";
             lupetto.save();
         } else {
             Anagrafica anagrafica = new Anagrafica(
@@ -267,7 +283,10 @@ public class Edit_Lupetto extends AppCompatActivity {
                     Pista.values()[pista.getSelectedItemPosition()],
                     Specialità.idsToString(specs),
                     cda.isChecked(),
-                    anagrafica);
+                    anagrafica,
+                    Prova.ListProveToIDString(Prova.verboseStringToList(prove.getText().toString())),
+                    "" //assenze
+                    );
             lupetto.save();
             id_lupetto = lupetto.getId().intValue();
         }
