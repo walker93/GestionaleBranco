@@ -9,30 +9,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<meta-data android:name="DATABASE" android:value="lupetti.db" />
-        <meta-data android:name="VERSION" android:value="3" />
+
+        <!--         <meta-data android:name="DATABASE" android:value="lupetti.db" /> -->
+        <meta-data
+            android:name="VERSION"
+            android:value="2" />
+        <!--
         <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.walker93" />-->
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.walker93" />
+        -->
 
         <activity
             android:name=".LupettoListActivity"
             android:label="@string/title_lupetto_list"
             android:launchMode="standard"
-
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".LupettoDetailActivity"
             android:label="@string/title_lupetto_detail"
             android:launchMode="standard"
-            android:parentActivityName=".LupettoListActivity"
             android:noHistory="true"
+            android:parentActivityName=".LupettoListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -42,7 +45,15 @@
             android:name=".Edit_Lupetto"
             android:label="@string/title_activity_edit__lupetto"
             android:launchMode="standard"
-
+            android:parentActivityName=".LupettoDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gestionalebranco.walker93.com.gestionalebranco.LupettoDetailActivity" />
+        </activity>
+        <activity
+            android:name=".ProvaDettaglio"
+            android:label="@string/title_activity_prova_dettaglio"
             android:parentActivityName=".LupettoDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

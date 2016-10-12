@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +112,12 @@ public class LupettoListActivity extends AppCompatActivity {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).Nome);
             holder.mContentView.setText(mValues.get(position).Cognome);
+
+            TypedValue typedValue = new TypedValue();
+            getTheme().resolveAttribute(R.attr.selectableItemBackgroundBorderless, typedValue, true);
+            holder.mView.setBackgroundResource(typedValue.resourceId);
+
+            //holder.mView.setBackgroundResource(typedValue.resourceId);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -1,6 +1,7 @@
 package gestionalebranco.walker93.com.gestionalebranco;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -64,7 +64,8 @@ public class LupettoDetailFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        List<Specialità> specs = new ArrayList<>();
+        List<Specialità> specs;
+        List<Prova> provs;
         if (lupetto != null) {
             //((TextView) rootView.findViewById(R.id.lupetto_detail)).setText(lupetto.Cognome);
 
@@ -79,7 +80,9 @@ public class LupettoDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.tv_data)).setText(anagrafica.DataNascita);
             ((TextView) rootView.findViewById(R.id.tv_luogo)).setText(anagrafica.Luogo_Nascita);
             specs = Specialità.stringToIDs(lupetto.Specialità);
-            //POPOLAZIONE ListView
+            provs = Prova.IDStringToProveList(lupetto.Prove);
+
+            //POPOLAZIONE ListView Spec
             TextView tv_spec;
             ScrollView lv = (ScrollView) rootView.findViewById(R.id.lv_Specialità);
             LinearLayout linearLayout = (LinearLayout) lv.getChildAt(0);
@@ -87,6 +90,32 @@ public class LupettoDetailFragment extends Fragment {
                 tv_spec = new TextView(getContext());
                 tv_spec.setText(spec.Nome);
                 tv_spec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                linearLayout.addView(tv_spec);
+            }
+            TypedValue typedValue = new TypedValue();
+            getActivity().getTheme().resolveAttribute(R.attr.selectableItemBackgroundBorderless, typedValue, true);
+            lv = (ScrollView) rootView.findViewById(R.id.lv_Prove);
+            linearLayout = (LinearLayout) lv.getChildAt(0);
+            for (Prova p : provs){
+                final int index = Prova.allProve.indexOf(p);
+                tv_spec = new TextView(getContext());
+                tv_spec.setText(p.Nome);
+                tv_spec.setTag(index);
+                tv_spec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                tv_spec.setClickable(true);
+                tv_spec.setBackgroundResource(typedValue.resourceId);
+                tv_spec.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+                                                   Intent i = new Intent(getActivity().getApplicationContext(), ProvaDettaglio.class);
+                                                   i.putExtra("ID_Prova", (int) v.getTag());
+                                                   i.putExtra("ID_Lupetto", lupetto_id);
+                                                    startActivity(i);
+                                                   //getActivity().finish();
+                                               }
+                                           }
+
+                );
                 linearLayout.addView(tv_spec);
             }
         }
