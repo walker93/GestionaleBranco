@@ -1,8 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="gestionalebranco.walker93.com.gestionalebranco.ListLupettiActivity">
     <item android:title="Prove"
-        android:showAsAction="always"
-        android:icon="@drawable/ic_prova"
-        android:id="@+id/ac_prove_button" />
+        android:icon="@drawable/ic_prova_white"
+        android:id="@+id/ac_prove_button"
+        app:showAsAction="always" />
 </menu>

@@ -65,6 +65,7 @@ public class LupettoListActivity extends AppCompatActivity {
 
         View recyclerView = findViewById(R.id.lupetto_list);
         assert recyclerView != null;
+
         setupRecyclerView((RecyclerView) recyclerView);
 
         if (findViewById(R.id.lupetto_detail_container) != null) {
@@ -110,12 +111,13 @@ public class LupettoListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(SV);
+        recyclerView.setHasFixedSize(true);
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private  List<Lupetto> mValues= Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
+        private  List<Lupetto> mValues;
 
         public SimpleItemRecyclerViewAdapter(List<Lupetto> items) {
             mValues = items;
@@ -130,7 +132,7 @@ public class LupettoListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-
+            mValues = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).Nome);
             holder.mContentView.setText(mValues.get(position).Cognome);
