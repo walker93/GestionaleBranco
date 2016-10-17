@@ -9,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -75,6 +77,26 @@ public class LupettoListActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_list_lupetti, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.ac_prove_button) {
+            //Start activity prove add
+            Intent i = new Intent(this, AddProveActivity.class);
+            startActivity(i);
+            finish();
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
     }
@@ -93,7 +115,7 @@ public class LupettoListActivity extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private  List<Lupetto> mValues;
+        private  List<Lupetto> mValues= Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
 
         public SimpleItemRecyclerViewAdapter(List<Lupetto> items) {
             mValues = items;
@@ -108,14 +130,14 @@ public class LupettoListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            mValues = Lupetto.listAll(Lupetto.class);
+
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).Nome);
             holder.mContentView.setText(mValues.get(position).Cognome);
-
-            TypedValue typedValue = new TypedValue();
-            getTheme().resolveAttribute(R.attr.selectableItemBackgroundBorderless, typedValue, true);
-            holder.mView.setBackgroundResource(typedValue.resourceId);
+            holder.mSestigliaView.setText(mValues.get(position).Sestiglia.toString());
+            //TypedValue typedValue = new TypedValue();
+            //getTheme().resolveAttribute(R.attr.selectableItemBackgroundBorderless, typedValue, true);
+            //holder.mView.setBackgroundResource(typedValue.resourceId);
 
             //holder.mView.setBackgroundResource(typedValue.resourceId);
 
@@ -152,6 +174,7 @@ public class LupettoListActivity extends AppCompatActivity {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
+            public final TextView mSestigliaView;
             public Lupetto mItem;
 
             public ViewHolder(View view) {
@@ -159,6 +182,7 @@ public class LupettoListActivity extends AppCompatActivity {
                 mView = view;
                 mIdView = (TextView) view.findViewById(R.id.id);
                 mContentView = (TextView) view.findViewById(R.id.content);
+                mSestigliaView = (TextView) view.findViewById(R.id.sestiglia);
             }
 
             @Override

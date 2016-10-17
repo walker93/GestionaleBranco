@@ -5,4 +5,5 @@
     <string name="title_lupetto_detail">Dettaglio Lupetto</string>
     <string name="title_activity_edit__lupetto">Crea/Modifica Lupetto</string>
     <string name="title_activity_prova_dettaglio">Dettaglio Prova</string>
+    <string name="title_activity_add_prove">Aggiungi prove</string>
 </resources>

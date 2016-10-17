@@ -1,10 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="gestionalebranco.walker93.com.gestionalebranco.ListLupettiActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+    <item android:title="Prove"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_prova"
+        android:id="@+id/ac_prove_button" />
 </menu>

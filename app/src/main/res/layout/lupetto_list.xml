@@ -6,8 +6,8 @@
     android:name="gestionalebranco.walker93.com.gestionalebranco.LupettoListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp"
+    android:paddingEnd="8dp"
+    android:paddingStart="8dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="gestionalebranco.walker93.com.gestionalebranco.LupettoListActivity"
     tools:listitem="@layout/lupetto_list_content" />
