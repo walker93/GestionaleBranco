@@ -20,6 +20,7 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Edit_Lupetto extends AppCompatActivity {
@@ -239,6 +240,9 @@ public class Edit_Lupetto extends AppCompatActivity {
             }
         }
 
+        //Prove
+        List<Prova> prove_da_aggiungere = Prova.verboseStringToList(prove.getText().toString());
+        Collections.sort(prove_da_aggiungere, new Prova_compare());
         if (id_lupetto > 0) {
             Anagrafica anagrafica = Anagrafica.findById(Anagrafica.class, id_lupetto);
             anagrafica.Nome = nome.getText().toString();
@@ -260,7 +264,7 @@ public class Edit_Lupetto extends AppCompatActivity {
             lupetto.Specialità = Specialità.idsToString(specs);
             lupetto.CdA = cda.isChecked();
             lupetto.Anagrafica = anagrafica;
-            lupetto.Prove = Prova.ListProveToIDString(Prova.verboseStringToList(prove.getText().toString()));
+            lupetto.Prove = Prova.ListProveToIDString(prove_da_aggiungere);
             Lupetto.Assenze = "";
             lupetto.save();
         } else {
@@ -284,7 +288,7 @@ public class Edit_Lupetto extends AppCompatActivity {
                     Specialità.idsToString(specs),
                     cda.isChecked(),
                     anagrafica,
-                    Prova.ListProveToIDString(Prova.verboseStringToList(prove.getText().toString())),
+                    Prova.ListProveToIDString(prove_da_aggiungere),
                     "" //assenze
                     );
             lupetto.save();

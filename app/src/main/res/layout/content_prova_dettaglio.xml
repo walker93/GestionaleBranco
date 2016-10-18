@@ -23,85 +23,93 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
 
-                <TextView
-                    android:text="Nome:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView1"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_nomeProva"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:text="Numero Prova:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView12"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-                <TextView
-                    android:text="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/NumProva"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <TextView
-                    android:text="Prova di:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView13"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_pistaProva"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-            </LinearLayout>
+                        <TextView
+                            android:text="Nome:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-                <TextView
-                    android:text="Descrizione:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView11"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_nomeProva"
 
-            </LinearLayout>
+                            android:layout_column="2"
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                        <TextView
+                            android:text="Prova di:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView13"
+
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_pistaProva"
+
+                            android:layout_column="2"
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                        <TextView
+                            android:text="Numero Prova:"
+                            android:layout_width="151dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView12"
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                        <TextView
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/NumProva"
+
+                            android:layout_column="2"
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                        <TextView
+                            android:text="Descrizione:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView11"
+
+                            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                </TableRow>
+            </TableLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

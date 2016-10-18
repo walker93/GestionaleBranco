@@ -17,14 +17,15 @@ import android.widget.CompoundButton;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 public class AddProveActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    public RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private List<Lupetto> SV = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
+    private static List<Lupetto> SV = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class AddProveActivity extends AppCompatActivity {
 
         //Carica MAC
 
-        MultiAutoCompleteTextView prove = (MultiAutoCompleteTextView) findViewById(R.id.MAC_Prove);
+        final MultiAutoCompleteTextView prove = (MultiAutoCompleteTextView) findViewById(R.id.MAC_Prove);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, Prova.ProveToName());
         prove.setAdapter(adapter);
         prove.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
@@ -52,14 +53,30 @@ public class AddProveActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: salva prove
 
+                List<Prova> Prove_da_aggiungere = Prova.verboseStringToList(prove.getText().toString());
+                List<Prova> Prove_gia_possedute;
+                int index=0;
+                for (boolean b : lup_si) {
+                    if (b){
+                        Lupetto lupetto = SV.get(index);
+                        Prove_gia_possedute= Prova.IDStringToProveList(lupetto.Prove);
+                        Prove_da_aggiungere.removeAll(Prove_gia_possedute);
+                        Prove_da_aggiungere.addAll(Prove_gia_possedute);
+
+                        Collections.sort(Prove_da_aggiungere, new Prova_compare());
+                        lupetto.Prove = Prova.ListProveToIDString(Prove_da_aggiungere);
+                        lupetto.save();
+                    }
+                    index++;
+                }
+                goBack();
 
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
+    public static boolean[] lup_si = new boolean[SV.size()];
     @Override
     public void onBackPressed() {
         goBack();
@@ -133,7 +150,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return vh;
     }
     private List<Lupetto> mValues;
-    private boolean[] mSi;
+    public boolean[] mSi;
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
@@ -151,6 +168,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mSi[position] = isChecked;
+                AddProveActivity.lup_si[position] = isChecked;
             }
         });
 

@@ -100,6 +100,7 @@ public class LupettoDetailFragment extends Fragment {
                 final int index = Prova.allProve.indexOf(p);
                 tv_spec = new TextView(getContext());
                 tv_spec.setText(p.Nome);
+                tv_spec.setSingleLine(true);
                 tv_spec.setTag(index);
                 tv_spec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                 tv_spec.setClickable(true);

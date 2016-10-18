@@ -3,6 +3,7 @@ package gestionalebranco.walker93.com.gestionalebranco;
 import com.orm.dsl.Ignore;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -137,8 +138,6 @@ public class Prova {
         return result;
     }
 
-
-
     public static String ListProveToIDString(List<Prova> list) {
         String result = "";
         for (Prova s : list) {
@@ -170,5 +169,18 @@ public class Prova {
             result.add(s.Nome);
         }
         return result;
+    }
+}
+
+class Prova_compare implements Comparator<Prova>{
+    @Override
+    public int compare(Prova o1, Prova o2) {
+        if (o1.Pista.ordinal() > o2.Pista.ordinal()){return 1;}
+        else if(o1.Pista.ordinal()<o2.Pista.ordinal()){return -1;}
+        else {
+            if (o1.numProva>o2.numProva){return 1;}
+            else if (o1.numProva<o2.numProva){return -1;}
+            else {return 0;}
+        }
     }
 }

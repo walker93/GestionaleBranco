@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:columnCount="3">
 
     <TextView
         android:id="@+id/id"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="@android:style/TextAppearance.Material.Subhead" />
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+        android:text="aaa" />
 
     <TextView
         android:id="@+id/content"
+        android:layout_column="1"
+        android:layout_gravity="fill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="@android:style/TextAppearance.Material.Subhead" />
+        android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+        android:text="aaa" />
 
     <TextView
         android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_gravity="fill"
+        android:layout_columnWeight="1"
         android:layout_height="wrap_content"
         android:id="@+id/sestiglia"
         android:layout_margin="@dimen/text_margin"
-        android:layout_weight="1"
-        android:textAppearance="@android:style/TextAppearance.Material.Subhead" />
-</LinearLayout>
+        android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+        android:text="aaa" />
+</GridLayout>
+

@@ -22,205 +22,216 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/textView"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="E-Mail:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-            <TextView
-                android:id="@+id/txt_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autoLink="email"
-                android:text="Email"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.12"
-                android:text="Indirizzo:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-            <TextView
-                android:id="@+id/txt_indirizzo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autoLink="map"
-                android:text="Indirizzo"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="106dp"
-                android:layout_height="wrap_content"
-                android:text="Tel. Fisso:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-            <TextView
-                android:id="@+id/txt_fisso"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autoLink="phone"
-                android:text="Fisso"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-        </LinearLayout>
+                android:layout_height="match_parent" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/textView"
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.09"
-                android:text="Cell. Madre:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <TextView
-                android:id="@+id/txt_madre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autoLink="phone"
-                android:text="Cell Madre"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-        </LinearLayout>
+                    android:text="E-Mail:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:paddingStart="@dimen/text_margin"
+                    android:autoLink="email"
+                    android:text="Email"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.10"
-                android:text="Cell. Padre:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-            <TextView
-                android:id="@+id/txt_padre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autoLink="phone"
-                android:text="Cell Padre"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+                    android:text="Indirizzo:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.06"
-                android:text="Data Nascita:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                <TextView
+                    android:id="@+id/txt_indirizzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:autoLink="map"
+                    android:paddingStart="@dimen/text_margin"
+                    android:text="Indirizzo"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tv_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Data Nascita"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="106dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tel. Fisso:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txt_fisso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:paddingStart="@dimen/text_margin"
+                    android:autoLink="phone"
+                    android:text="Fisso"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.06"
-                android:text="Luogo Nascita:"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-            <TextView
-                android:id="@+id/tv_luogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Luogo Nascita"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                    android:text="Cell. Madre:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-            <TextView
-                android:id="@+id/txt_sestiglia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sestiglia"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                <TextView
+                    android:id="@+id/txt_madre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/text_margin"
+                    android:layout_column="2"
+                    android:autoLink="phone"
+                    android:text="Cell Madre"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/txt_pista"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pista"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
 
-            <CheckedTextView
-                android:id="@+id/ctb_cda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoText="false"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="true"
-                android:gravity="fill_vertical"
-                android:singleLine="false"
-                android:text="C.d.A."
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        </LinearLayout>
+                    android:text="Cell. Padre:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                <TextView
+                    android:id="@+id/txt_padre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:paddingStart="@dimen/text_margin"
+                    android:autoLink="phone"
+                    android:text="Cell Padre"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Data Nascita:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                <TextView
+                    android:id="@+id/tv_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:paddingStart="@dimen/text_margin"
+                    android:text="Data Nascita"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Luogo Nascita:"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                <TextView
+                    android:id="@+id/tv_luogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/text_margin"
+                    android:layout_column="2"
+                    android:text="Luogo Nascita"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_sestiglia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Sestiglia"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                <TextView
+                    android:id="@+id/txt_pista"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:paddingStart="@dimen/text_margin"
+                    android:text="Pista"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                <CheckedTextView
+                    android:id="@+id/ctb_cda"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:checkMark="?android:attr/textCheckMark"
+                    android:checked="true"
+
+                    android:layout_column="3"
+
+                    android:singleLine="false"
+                    android:text="C.d.A."
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:gravity="fill_vertical"
+
+                    android:textAlignment="textStart"
+                    android:layout_weight="1"
+                    android:textDirection="rtl" />
+            </TableRow>
+
+        </TableLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
