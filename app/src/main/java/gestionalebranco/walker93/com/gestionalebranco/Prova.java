@@ -164,12 +164,20 @@ public class Prova {
     }
 
     public static List<String> ProveToName(List<Prova> list){
+        return ProveToName(list, false);
+    }
+    
+    public static List<String> ProveToName(List<Prova> list, boolean ShowPista){
         List<String> result =  new ArrayList<>();
         for (Prova s : list) {
-            result.add(s.Nome);
+            if (ShowPista){
+                result.add(s.Nome + " - " + s.Pista);
+            }else{
+                result.add(s.Nome)
         }
         return result;
     }
+    
 }
 
 class Prova_compare implements Comparator<Prova>{
