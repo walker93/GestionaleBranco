@@ -99,7 +99,7 @@ public class LupettoDetailFragment extends Fragment {
             for (Prova p : provs){
                 final int index = Prova.allProve.indexOf(p);
                 tv_spec = new TextView(getContext());
-                tv_spec.setText(p.Nome);
+                tv_spec.setText(p.Nome + p.Pista);
                 tv_spec.setSingleLine(true);
                 tv_spec.setTag(index);
                 tv_spec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
