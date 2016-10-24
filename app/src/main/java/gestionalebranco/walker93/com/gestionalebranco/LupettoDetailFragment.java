@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,8 +100,10 @@ public class LupettoDetailFragment extends Fragment {
             for (Prova p : provs){
                 final int index = Prova.allProve.indexOf(p);
                 tv_spec = new TextView(getContext());
-                tv_spec.setText(p.Nome + p.Pista);
+                tv_spec.setText(p.Nome);
                 tv_spec.setSingleLine(true);
+                tv_spec.setHorizontallyScrolling(false);
+                tv_spec.setEllipsize(TextUtils.TruncateAt.END);
                 tv_spec.setTag(index);
                 tv_spec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                 tv_spec.setClickable(true);

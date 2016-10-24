@@ -18,7 +18,7 @@ public class Prova {
             add(new Prova(2, "Pregh. Del branco", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa2));
             add(new Prova(3, "Battesimo", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa3));
             add(new Prova(4, "Pregare col corpo", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa4));
-            add(new Prova(5, "Parabola", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa5));
+            add(new Prova(5, "Conoscere Parabola", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa5));
             add(new Prova(6, "Canto liturgico", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa6));
             add(new Prova(7, "Parola Maestra", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa7));
             add(new Prova(7, "Legge", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa8));
@@ -38,10 +38,10 @@ public class Prova {
             add(new Prova(19, "Scrivere cartolina", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa22));
             add(new Prova(1, "Confessione", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima0));
             add(new Prova(2, "Pregh. Lupetto", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima1));
-            add(new Prova(3, "vita gesù", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima2));
+            add(new Prova(3, "Infanzia gesù", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima2));
             add(new Prova(4, "Ricorrenze cristiane", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima3));
             add(new Prova(5, "S. Francesco", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima4));
-            add(new Prova(6, "Parabole", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima5));
+            add(new Prova(6, "Raccontare Parabole", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima5));
             add(new Prova(7, "Massime", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima6));
             add(new Prova(8, "Conoscenza giungla", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima7));
             add(new Prova(9, "Popoli giungla", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima8));
@@ -70,43 +70,48 @@ public class Prova {
             add(new Prova(30, "Respirare con naso", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima31));
             add(new Prova(1, "Eucarestia", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda1));
             add(new Prova(2, "S. Messa", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda2));
-            add(new Prova(3, "Vita gesù", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda8));
-            add(new Prova(4, "Vangelo", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda3));
-            add(new Prova(5, "Ricorrenze cristiane", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda4));
+            add(new Prova(3, "Vita e morte gesù", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda3));
+            add(new Prova(4, "Vangelo", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda4));
+            add(new Prova(5, "Ricorrenze cristiane", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda5));
             add(new Prova(6, "Madonna", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda6));
             add(new Prova(7, "S. Francesco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda7));
-            add(new Prova(8, "Vita primi cristiani", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda5));
-            add(new Prova(9, "Danza giungla", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda15));
-            add(new Prova(10, "Dirigere scenetta", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda16));
-            add(new Prova(11, "Diario di Branco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda14));
-            add(new Prova(12, "B.P", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(13, "Messaggio", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(14, "Risparmio", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(15, "Storia patria", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda9));
-            add(new Prova(15, "Realizzazione Scientifica", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda10));
-            add(new Prova(15, "Personaggi Illustri", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda11));
-            add(new Prova(16, "Bandiere paesi europei", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda12));
-            add(new Prova(17, "Alza-Amm. Bandiera", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda13));
-            add(new Prova(18, "Termometro", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(19, "Punti cardinali", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(19, "Corso del sole", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(20, "Stella polare", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(21, "Bussola", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(22, "Natura", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(23, "Trattamento ferita", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(24, "Tratt. Ustione leggera", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(25, "Conoscenza pericoli sporco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(26, "Nodo Barcaiolo", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(26, "Nodo Margherita", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(26, "Nodo cappio bombardiere", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(27, "Cucire distintivo", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(27, "Attaccare bottore", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(29, "Stirare foulard", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(30, "Lavoretto", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(31, "Accensione Fuoco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(32, "Conoscenza tracce - piantina", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(34, "Esercizi B.P.", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
-            add(new Prova(37, "Salto fosso", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.promessa1));
+            add(new Prova(8, "Vita primi cristiani", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda8));
+            add(new Prova(9, "Danza giungla", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda9));
+            add(new Prova(10, "Dirigere scenetta", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda10));
+            add(new Prova(11, "Diario di Branco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda11));
+            add(new Prova(12, "B.P", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda12));
+            add(new Prova(13, "Messaggio", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda13));
+            add(new Prova(14, "Risparmio", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda14));
+            add(new Prova(15, "Storia patria", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda15));
+            add(new Prova(15, "Realizzazione Scientifica", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda15));
+            add(new Prova(15, "Personaggi Illustri", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda15));
+            add(new Prova(16, "Bandiere paesi europei", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda16));
+            add(new Prova(17, "Alza-Amm. Bandiera", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda17));
+            add(new Prova(18, "Termometro", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda18));
+            add(new Prova(19, "Punti cardinali", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda19));
+            add(new Prova(19, "Corso del sole", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda19));
+            add(new Prova(20, "Stella polare", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda20));
+            add(new Prova(21, "Bussola", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda21));
+            add(new Prova(22, "Natura", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda22));
+            add(new Prova(23, "Trattamento ferita", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda23));
+            add(new Prova(24, "Tratt. Ustione leggera", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda24));
+            add(new Prova(25, "Conoscenza pericoli sporco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda25));
+            add(new Prova(26, "Nodo Barcaiolo", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda26));
+            add(new Prova(26, "Nodo Margherita", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda27));
+            add(new Prova(26, "Nodo cappio bombardiere", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda28));
+            add(new Prova(27, "Cucire distintivo", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda29));
+            add(new Prova(27, "Attaccare bottore", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda29));
+            add(new Prova(28, "Accendere stufa o fornello", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda30));
+            add(new Prova(29, "Stirare foulard", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda31));
+            add(new Prova(30, "Eseguire Lavoretto", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda32));
+            add(new Prova(31, "Accensione Fuoco", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda33));
+            add(new Prova(32, "Conoscenza tracce", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda34));
+            add(new Prova(33, "Fare piantina", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda35));
+            add(new Prova(34, "Esercizi B.P.", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda36));
+            add(new Prova(35, "25 salti corda", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda37));
+            add(new Prova(36, "Saltare muretto", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda38));
+            add(new Prova(37, "Saltare fosso", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda39));
+            add(new Prova(38, "Sapersi arrampicare albero", gestionalebranco.walker93.com.gestionalebranco.Pista.D_Seconda_stella, R.string.seconda40));
         }
     };
 
@@ -117,8 +122,6 @@ public class Prova {
 
     public Prova() {
     }
-
-    ;
 
     public Prova(int numprova, String nome, Pista pista, int descrizione) {
         numProva = numprova;
@@ -168,6 +171,10 @@ public class Prova {
         return Prova.ProveToName(allProve);
     }
 
+    public static List<String> ProveToName(boolean ShowPista){
+        return ProveToName(allProve, ShowPista);
+    }
+
     public static List<String> ProveToName(List<Prova> list) {
         return ProveToName(list, false);
     }
@@ -176,7 +183,7 @@ public class Prova {
         List<String> result = new ArrayList<>();
         for (Prova s : list) {
             if (ShowPista) {
-                result.add(s.Nome + " - " + s.Pista);
+                result.add(s.Nome + " - " + s.Pista + " (" + s.numProva + ")");
             } else {
                 result.add(s.Nome);
             }
@@ -185,7 +192,6 @@ public class Prova {
         }
 
     }
-
 
     class Prova_compare implements Comparator<Prova> {
         @Override
