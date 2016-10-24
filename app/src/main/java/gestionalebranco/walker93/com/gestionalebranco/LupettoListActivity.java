@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class LupettoListActivity extends AppCompatActivity {
 
-    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
+    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class, "SESTIGLIA, PISTA " + "DESC");
     SimpleItemRecyclerViewAdapter SV = new SimpleItemRecyclerViewAdapter(lupetti);
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
