@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class LupettoListActivity extends AppCompatActivity {
 
-    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class);
+    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
     SimpleItemRecyclerViewAdapter SV = new SimpleItemRecyclerViewAdapter(lupetti);
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -132,7 +132,8 @@ public class LupettoListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            mValues = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
+            //mValues = Lupetto.listAll(Lupetto.class, "PISTA " + "DESC");
+
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).Nome);
             holder.mContentView.setText(mValues.get(position).Cognome);
