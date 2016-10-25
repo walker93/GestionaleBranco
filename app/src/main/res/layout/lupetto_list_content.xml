@@ -7,30 +7,30 @@
     <TextView
         android:id="@+id/id"
 
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_column="0"
         android:layout_columnWeight="1"
-        android:layout_gravity="fill"
+
         android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-        android:text="aaa" />
+        android:text="aaaaaaa" />
 
     <TextView
         android:id="@+id/content"
         android:layout_column="1"
-        android:layout_gravity="fill"
-        android:layout_width="wrap_content"
+
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-        android:text="aaa" />
+        android:text="a" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_column="2"
-        android:layout_gravity="fill"
+
         android:layout_columnWeight="1"
         android:layout_height="wrap_content"
         android:id="@+id/sestiglia"
