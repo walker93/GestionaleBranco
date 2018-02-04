@@ -52,7 +52,7 @@ public class LupettoDetailFragment extends Fragment {
                 lupetto_id = activity.getIntent().getIntExtra("ID_Lupetto", 0);
             }
             lupetto = Lupetto.findById(Lupetto.class, lupetto_id);
-            anagrafica = Anagrafica.findById(Anagrafica.class, lupetto_id);
+            anagrafica = Anagrafica.findById(Anagrafica.class, lupetto_id); //lupetto.Anagrafica;
 
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {

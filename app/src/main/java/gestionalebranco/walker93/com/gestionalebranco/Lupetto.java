@@ -2,6 +2,8 @@ package gestionalebranco.walker93.com.gestionalebranco;
 
 import com.orm.SugarRecord;
 
+import java.util.List;
+
 /**
  * Created by Workstation 2 on 26/09/2016.
  */
@@ -34,4 +36,24 @@ public class Lupetto extends SugarRecord{
         this.Prove = prove;
         this.Assenze = assenze;
     }
+
+    public static String LupettiToCSV(List<Lupetto> list){
+        String result="Nome;Cognome;Sestiglia;Pista;Specialità;CdA;Anagrafica;Prove;Assenze;\n";
+        for (Lupetto s : list) {
+            result+=(s.Nome+";");
+            result+=(s.Cognome+";");
+            result+=(s.Sestiglia.name()+";");
+            result+=(s.Pista.name()+";");
+            result+=(gestionalebranco.walker93.com.gestionalebranco.Specialità.IDsToVerboseString(
+                                s.Specialità) + ";");
+            result+=(s.CdA+";");
+            result+=(s.Anagrafica.print()+";");
+            result+=(Prova.ListProveToVerboseString(s.Prove)+";");
+            result+=(s.Assenze+";");
+            result+=("\n");
+        }
+        return result;
+    }
+
+
 }

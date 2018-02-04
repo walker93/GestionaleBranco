@@ -81,4 +81,34 @@ public class Specialità {
         return result;
     }
 
+    public static String IDsToVerboseString(String ids) {
+
+        return ListSpecialitàToVerboseString(stringToIDs(ids));
+    }
+
+    public static List<Specialità> verboseStringToList(String verboseString) {
+        List<Specialità> result = new ArrayList<>();
+        if (verboseString.length() >= 1) {
+            String[] split = verboseString.split(", ");
+            for (int i = 0; i < split.length; i++) {
+                String nome = split[i];
+                for (Specialità p : allSpecialità) {
+                    if (p.Nome.equals(nome)) {
+                        result.add(p);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    public static String ListSpecialitàToVerboseString(List<Specialità> list) {
+        String result = "";
+        for (Specialità s : list) {
+            result = result + s.Nome + ", ";
+        }
+        return result;
+    }
+
+
 }

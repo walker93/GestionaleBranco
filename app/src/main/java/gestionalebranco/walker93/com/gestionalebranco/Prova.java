@@ -14,28 +14,28 @@ public class Prova {
     @Ignore
     public static final List<Prova> allProve = new ArrayList<Prova>() {
         {
-            add(new Prova(1, "Principali Preghiere", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa1));
-            add(new Prova(2, "Pregh. Del branco", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa2));
-            add(new Prova(3, "Battesimo", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa3));
-            add(new Prova(4, "Pregare col corpo", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa4));
-            add(new Prova(5, "Conoscere Parabola", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa5));
-            add(new Prova(6, "Canto liturgico", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa6));
-            add(new Prova(7, "Parola Maestra", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa7));
-            add(new Prova(7, "Legge", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa8));
-            add(new Prova(7, "B_Promessa", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa9));
-            add(new Prova(8, "B. A.", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa10));
-            add(new Prova(9, "Saluto", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa11));
-            add(new Prova(9, "Grande urlo", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa12));
-            add(new Prova(10, "Distintivi", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa13));
-            add(new Prova(11, "Sapersi presentare", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa14));
-            add(new Prova(12, "Eseguire Danza giungla", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa15));
-            add(new Prova(13, "Canto lupetto", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa16));
-            add(new Prova(14, "Annodare Foulard", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa17));
-            add(new Prova(15, "Allacciarsi Scarpe", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa18));
-            add(new Prova(16, "Nodo Piano", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa19));
-            add(new Prova(17, "Scrivere Dati anagrafici", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa20));
-            add(new Prova(18, "Indirizzi VV.LL.", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa21));
-            add(new Prova(19, "Scrivere cartolina", gestionalebranco.walker93.com.gestionalebranco.Pista.A_Ammissione, R.string.promessa22));
+            add(new Prova(1, "Principali Preghiere", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa1));
+            add(new Prova(2, "Pregh. Del branco", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa2));
+            add(new Prova(3, "Battesimo", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa3));
+            add(new Prova(4, "Pregare col corpo", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa4));
+            add(new Prova(5, "Conoscere Parabola", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa5));
+            add(new Prova(6, "Canto liturgico", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa6));
+            add(new Prova(7, "Parola Maestra", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa7));
+            add(new Prova(7, "Legge", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa8));
+            add(new Prova(7, "B_Promessa", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa9));
+            add(new Prova(8, "B. A.", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa10));
+            add(new Prova(9, "Saluto", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa11));
+            add(new Prova(9, "Grande urlo", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa12));
+            add(new Prova(10, "Distintivi", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa13));
+            add(new Prova(11, "Sapersi presentare", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa14));
+            add(new Prova(12, "Eseguire Danza giungla", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa15));
+            add(new Prova(13, "Canto lupetto", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa16));
+            add(new Prova(14, "Annodare Foulard", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa17));
+            add(new Prova(15, "Allacciarsi Scarpe", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa18));
+            add(new Prova(16, "Nodo Piano", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa19));
+            add(new Prova(17, "Scrivere Dati anagrafici", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa20));
+            add(new Prova(18, "Indirizzi VV.LL.", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa21));
+            add(new Prova(19, "Scrivere cartolina", gestionalebranco.walker93.com.gestionalebranco.Pista.B_Promessa, R.string.promessa22));
             add(new Prova(1, "Confessione", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima0));
             add(new Prova(2, "Pregh. Lupetto", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima1));
             add(new Prova(3, "Infanzia gesù", gestionalebranco.walker93.com.gestionalebranco.Pista.C_Prima_stella, R.string.prima2));
@@ -144,6 +144,20 @@ public class Prova {
             }
         }
         return result;
+    }
+
+    public static String ListProveToVerboseString(List<Prova> list) {
+        String result = "";
+        for (Prova s : list) {
+            result = result + s.Nome + ", ";
+        }
+        return result;
+    }
+
+
+    public static String ListProveToVerboseString(String ids) {
+
+        return ListProveToVerboseString(IDStringToProveList(ids));
     }
 
     public static String ListProveToIDString(List<Prova> list) {

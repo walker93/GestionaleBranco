@@ -84,7 +84,12 @@ public class Edit_Lupetto extends AppCompatActivity {
         data = (EditText) findViewById(R.id.et_data);
         luogo = (EditText) findViewById(R.id.et_luogo);
         prove = (MultiAutoCompleteTextView) findViewById(R.id.actv_Prove);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, Prova.ProveToName(true));
+
+        List<String> Prove_gruppi = Prova.ProveToName(true);
+        Prove_gruppi.add("Tutte 1° stella");
+        Prove_gruppi.add("Tutte 2° stella");
+        Prove_gruppi.add("Tutte promessa");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, Prove_gruppi);
         prove.setAdapter(adapter);
         prove.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         prove.setOnItemClickListener(new AdapterView.OnItemClickListener(
@@ -92,16 +97,43 @@ public class Edit_Lupetto extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String) parent.getItemAtPosition(position);
-                Prova p = Prova.allProve.get(0);
-                for (Prova s : Prova.allProve) {
-                    if (item.contains(s.Nome)) {
-                        p = s;
-                    }
-                }
                 String testo = prove.getText().toString();
                 testo = testo.substring(0, testo.length()-item.length() - 2);
                 prove.setText(testo);
-                prove.append(p.Nome + ", ");
+                Prova p = Prova.allProve.get(0);
+                switch (item){
+                    case "Tutte 1° stella":
+                        for (Prova s : Prova.allProve) {
+                            if (s.Pista.equals(Pista.C_Prima_stella)) {
+                                p = s;
+                                prove.append(p.Nome + ", ");
+                            }
+                        }
+                        break;
+                    case "Tutte 2° stella":
+                        for (Prova s : Prova.allProve) {
+                            if (s.Pista.equals(Pista.D_Seconda_stella)) {
+                                p = s;
+                                prove.append(p.Nome + ", ");
+                            }
+                        }
+                        break;
+                    case "Tutte promessa":
+                        for (Prova s : Prova.allProve) {
+                            if (s.Pista.equals(Pista.B_Promessa)) {
+                                p = s;
+                                prove.append(p.Nome + ", ");
+                            }
+                        }
+                        break;
+                    default:
+                        for (Prova s : Prova.allProve) {
+                            if (item.contains(s.Nome)) {
+                                p = s;
+                            }
+                        }
+                        prove.append(p.Nome + ", ");
+                }
             }
         });
         fillData();

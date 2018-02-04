@@ -32,4 +32,35 @@ public class Anagrafica extends SugarRecord {
         DataNascita = dataNascita;
         Luogo_Nascita = luogo_nascita;
     }
+
+    public String print(){
+        String result ="";
+        result+=(this.Nome+",");
+        result+=(this.Cognome+",");
+        result+=(this.Indirizzo+",");
+        result+=(this.Email+",");
+        result+=(this.Tel_fisso+",");
+        result+=(this.Cell_Madre+",");
+        result+=(this.Cell_Padre+",");
+        result+=(this.DataNascita+",");
+        result+=(this.Luogo_Nascita);
+
+        return result;
+    }
+
+    public static Anagrafica read(String text){
+        String[] values = text.split(",",-1);
+        return new Anagrafica(
+                values[0].trim(),
+                values[1].trim(),
+                values[2].trim(),
+                values[3].trim(),
+                values[4].trim(),
+                values[5].trim(),
+                values[6].trim(),
+                values[7].trim(),
+                values[8].trim()
+        );
+
+    }
 }

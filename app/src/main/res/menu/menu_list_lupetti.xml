@@ -6,4 +6,14 @@
         android:icon="@drawable/ic_prova_white"
         android:id="@+id/ac_prove_button"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/ac_export_button"
+        android:icon="@drawable/ic_share"
+        android:title="Salva Lupetti"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/ac_import_button"
+        android:icon="@drawable/ic_restore"
+        android:title="Importa Lupetti"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -1,10 +1,18 @@
 package gestionalebranco.walker93.com.gestionalebranco;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +26,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.aditya.filebrowser.Constants;
+import com.aditya.filebrowser.FileChooser;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,8 +53,9 @@ import java.util.List;
  */
 public class LupettoListActivity extends AppCompatActivity {
 
-    List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class, "SESTIGLIA, PISTA " + "DESC");
-    SimpleItemRecyclerViewAdapter SV = new SimpleItemRecyclerViewAdapter(lupetti);
+    List<Lupetto> lupetti = new ArrayList<>();
+
+    SimpleItemRecyclerViewAdapter SV;
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -46,6 +67,10 @@ public class LupettoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupetto_list);
+        if (Lupetto.count(Lupetto.class)>0) {
+            lupetti = Lupetto.listAll(Lupetto.class, "SESTIGLIA, PISTA " + "DESC");
+        }
+        SV = new SimpleItemRecyclerViewAdapter(lupetti);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -96,9 +121,94 @@ public class LupettoListActivity extends AppCompatActivity {
             Intent i = new Intent(this, AddProveActivity.class);
             startActivity(i);
             finish();
+        } else if (id == R.id.ac_export_button) {
+            try {
+                if (ContextCompat.checkSelfPermission(LupettoListActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(LupettoListActivity.this,
+                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                10);
 
+                } else {
+                        boolean saving = saveCSV(Lupetto.LupettiToCSV(Lupetto.listAll(Lupetto.class)));
+                        if (saving) {
+                            SnackbarWrapper snackbar = SnackbarWrapper
+                                    .make(getApplicationContext(), "File salvato in: /GestionaleBranco/Lupetti.csv", 3000);
+                            snackbar.show();
+                        } else {
+                            SnackbarWrapper snackbar = SnackbarWrapper
+                                    .make(getApplicationContext(), "Impossibile salvare il file.", 3000);
+                            snackbar.show();
+                        }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else if (id == R.id.ac_import_button) {
+            try {
+                if (ContextCompat.checkSelfPermission(LupettoListActivity.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(LupettoListActivity.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            20);
+
+                } else {
+                    Intent i2 = new Intent(getApplicationContext(), FileChooser.class);
+                    i2.putExtra(Constants.SELECTION_MODE, Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
+                    i2.putExtra(Constants.INITIAL_DIRECTORY,
+                            new File(Environment.getExternalStorageDirectory().getAbsolutePath(),
+                                    "GestionaleBranco").getAbsolutePath());
+                    i2.putExtra(Constants.ALLOWED_FILE_EXTENSIONS, "csv");
+                    startActivityForResult(i2,30);
+
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 10: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    boolean saving = saveCSV(Lupetto.LupettiToCSV(Lupetto.listAll(Lupetto.class)));
+                    if (saving) {
+                        SnackbarWrapper snackbar = SnackbarWrapper
+                                .make(getApplicationContext(), "File salvato in: /GestionaleBranco/Lupetti.csv", 3000);
+                        snackbar.show();
+                    } else {
+                        SnackbarWrapper snackbar = SnackbarWrapper
+                                .make(getApplicationContext(), "Impossibile salvare il file.", 3000);
+                        snackbar.show();
+                    }
+                } else {
+                    //Permesso rifiutato
+                }
+                return;
+            }case 20: {
+                Intent i2 = new Intent(getApplicationContext(), FileChooser.class);
+                i2.putExtra(Constants.SELECTION_MODE, Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
+                i2.putExtra(Constants.INITIAL_DIRECTORY,
+                        new File(Environment.getExternalStorageDirectory().getAbsolutePath(),
+                                "GestionaleBranco").getAbsolutePath());
+                i2.putExtra(Constants.ALLOWED_FILE_EXTENSIONS, "csv");
+                startActivityForResult(i2,30);
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
     @Override
@@ -200,5 +310,125 @@ public class LupettoListActivity extends AppCompatActivity {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
         }
+    }
+
+
+    private boolean readCSV(String path){
+        try {
+            InputStream inputStream = new FileInputStream(path);
+            if (inputStream != null) {
+                InputStreamReader streamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(streamReader);
+                String line;
+                //ArrayList<Lupetto> new_lupetti = new ArrayList<>();
+                //ArrayList<Anagrafica> new_anagrafica = new ArrayList<>();
+                Anagrafica.deleteAll(Anagrafica.class);
+                Lupetto.deleteAll(Lupetto.class);
+                while (( line = bufferedReader.readLine()) != null) {
+                    String[] fields = line.split(";",-1);
+                    if (!fields[0].equals("Nome")) {
+                        Anagrafica anag = Anagrafica.read(fields[6].trim());
+                        Anagrafica.save(anag);
+                        Lupetto lupetto = new Lupetto(
+                                fields[0].trim(),
+                                fields[1].trim(),
+                                Sestiglie.valueOf(fields[2].trim()),
+                                Pista.valueOf(fields[3].trim()),
+                                Specialità.idsToString(Specialità.verboseStringToList(fields[4].trim())),
+                                Boolean.parseBoolean(fields[5].trim()),
+                                anag,
+                                Prova.ListProveToIDString(Prova.verboseStringToList(fields[7].trim())),
+                                fields[8].trim()
+                        );
+                        Lupetto.save(lupetto);
+                        //new_anagrafica.add(anag);
+                        //new_lupetti.add(lupetto);
+                    }
+                }
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.lupetto_list);
+                List<Lupetto> lupetti = Lupetto.listAll(Lupetto.class, "SESTIGLIA, PISTA " + "DESC");
+                SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(lupetti);
+                recyclerView.setAdapter(adapter);
+                recyclerView.invalidate();
+                
+            }
+            inputStream.close(); //close the file
+            return true;
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private boolean saveCSV(String text){
+        try {
+            File dest = Environment.getExternalStorageDirectory();
+
+            String backupDBPath = dest.toString() + "/GestionaleBranco/Lupetti.csv";
+            File backupDB = new File(backupDBPath);
+            if (Lupetto.count(Lupetto.class)>0) {
+                backupDB.getParentFile().mkdirs();
+                backupDB.createNewFile();
+                FileOutputStream dst = new FileOutputStream(backupDB);
+                dst.write(text.getBytes());
+                dst.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 30 && data!=null) {
+            if (resultCode == RESULT_OK) {
+
+                try {
+                    Uri file = data.getData();
+                    boolean reading;
+                    reading = readCSV(getPath(getApplicationContext(), file));
+                    if (reading) {
+                        SV.notifyItemRangeChanged(0, (int) Lupetto.count(Lupetto.class));
+                        SV.notifyDataSetChanged();
+                        SnackbarWrapper snackbar = SnackbarWrapper
+                                .make(getApplicationContext(), "Lupetti importati", 3000);
+                        snackbar.show();
+                    } else {
+                        SnackbarWrapper snackbar = SnackbarWrapper
+                                .make(getApplicationContext(), "Impossibile importare il file.", 3000);
+                        snackbar.show();
+                    }
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Nullable
+    public static String getPath(Context context, Uri uri) throws URISyntaxException {
+        if ("content".equalsIgnoreCase(uri.getScheme())) {
+            String[] projection = { "_data" };
+            Cursor cursor = null;
+
+            try {
+                cursor = context.getContentResolver().query(uri, projection, null, null, null);
+                int column_index = cursor.getColumnIndexOrThrow("_data");
+                if (cursor.moveToFirst()) {
+                    return cursor.getString(column_index);
+                }
+            } catch (Exception e) {
+                // Eat it
+            }
+        }
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+
+        return null;
     }
 }
